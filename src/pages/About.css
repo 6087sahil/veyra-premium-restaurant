@@ -1,0 +1,538 @@
+.about-page-v2 {
+  --color-bg: #F3EBDD;
+  --color-card-bg: #F8F2E8;
+  --color-text-heading: #241B16;
+  --color-text-body: #4A3B32;
+  --color-text-muted: #6F6257;
+  --color-accent: #855B32;
+  --color-border: #D8C9B5;
+
+  background-color: var(--color-bg);
+  color: var(--color-text-body);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  padding-bottom: 100px;
+}
+
+html.dark .about-page-v2 {
+  --color-bg: #161616;
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-text-heading: #FDFBF7;
+  --color-text-body: rgba(253, 251, 247, 0.85);
+  --color-text-muted: rgba(253, 251, 247, 0.7);
+  --color-accent: #C69B60;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+.about-page-v2 h1,
+.about-page-v2 h2,
+.about-page-v2 h3 {
+  font-family: var(--font-logo);
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-text-heading);
+}
+
+.text-gold {
+  color: var(--color-accent);
+}
+
+/* Helper */
+.image-dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   1. EDITORIAL HERO SECTION
+   ========================================================================== */
+.hero-editorial {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 80px 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+}
+
+.hero-eyebrow {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(80px, 10vw, 130px);
+  line-height: 0.9;
+  letter-spacing: 2px;
+  margin-bottom: 0;
+  color: var(--color-text-heading);
+}
+
+.hero-accent-line {
+  height: 2px;
+  background-color: var(--color-accent);
+  margin: 20px 0 18px;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: var(--color-text-body);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 70%;
+  height: 55vh;
+  min-height: 400px;
+  max-height: 600px;
+  align-self: flex-end;
+  margin-top: -120px; 
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 5;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-image {
+  width: 100%;
+  height: 120%; 
+  object-fit: cover;
+  transform-origin: top;
+}
+
+/* ==========================================================================
+   2. STORY SECTION
+   ========================================================================== */
+.story-two-col {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 160px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.story-left h2 {
+  font-size: clamp(56px, 6vw, 88px);
+  line-height: 1.05;
+  letter-spacing: 1px;
+  color: var(--color-text-heading);
+}
+
+.story-right {
+  max-width: 480px;
+  padding-top: 20px;
+}
+
+.story-label {
+  font-size: 12px;
+  color: var(--color-accent);
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+
+.story-right p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--color-text-body);
+}
+
+/* ==========================================================================
+   3. INTERACTION COMPOSITION
+   ========================================================================== */
+.interaction-composition {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 80px 160px;
+}
+
+.bg-typography {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-logo);
+  font-size: clamp(140px, 18vw, 320px);
+  color: #FFFFFF;
+  opacity: 0.05;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.composition-grid {
+  position: relative;
+  z-index: 2;
+  height: 700px;
+}
+
+.comp-large-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 65%;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.comp-large-image img {
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+}
+
+.comp-small-image {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 35%;
+  max-width: 400px;
+  background: var(--color-card-bg);
+  padding: 24px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.comp-small-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.comp-text {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-style: italic;
+  padding: 0 10px;
+}
+
+/* ==========================================================================
+   4. OUR VALUES (HORIZONTAL)
+   ========================================================================== */
+.values-horizontal {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 80px 80px;
+}
+
+.value-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.value-row:last-child {
+  border-bottom: none;
+}
+
+.val-num {
+  font-family: var(--font-logo);
+  font-size: 80px;
+  color: var(--color-accent);
+  width: 200px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.val-content h3 {
+  font-size: 48px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  color: var(--color-text-heading);
+}
+
+.val-content p {
+  font-size: 22px;
+  color: var(--color-text-muted);
+  max-width: 600px;
+}
+
+/* ==========================================================================
+   5. CINEMATIC FULL WIDTH
+   ========================================================================== */
+.cinematic-section {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 80px;
+}
+
+.cinematic-wrapper {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cinematic-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130%; /* for parallax */
+  object-fit: cover;
+  z-index: 1;
+}
+
+.cinematic-darken {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  z-index: 2;
+}
+
+.cinematic-text {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.cinematic-text h2 {
+  font-size: clamp(64px, 8vw, 120px);
+  line-height: 1;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+  color: #FFFFFF;
+}
+
+.cinematic-text p {
+  font-size: 24px;
+  color: #FDFDFD;
+}
+
+/* ==========================================================================
+   6. FINAL CTA
+   ========================================================================== */
+.final-cta {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.cta-image-wrapper {
+  flex: 1;
+  max-width: 420px;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cta-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cta-container h2 {
+  font-size: clamp(64px, 8vw, 110px);
+  line-height: 1;
+  margin-bottom: 32px;
+  color: var(--color-text-heading);
+}
+
+.cta-container p {
+  font-size: 22px;
+  color: var(--color-text-muted);
+  margin-bottom: 48px;
+}
+
+.cta-button-gold {
+  background-color: var(--color-accent);
+  color: var(--color-text-heading);
+  border: none;
+  border-radius: 54px;
+  padding: 16px 40px;
+  font-size: 16px;
+  font-weight: 510;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-family: var(--font-main);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cta-button-gold:hover {
+  transform: translateY(-4px);
+  background-color: #976A3D;
+}
+
+.cta-arr {
+  transition: transform 0.3s ease;
+}
+
+.cta-button-gold:hover .cta-arr {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-editorial {
+    padding: 80px 40px 60px;
+  }
+  
+  .hero-image-wrapper {
+    width: 90%;
+    margin-top: -80px;
+  }
+  
+  .story-two-col {
+    flex-direction: column;
+    padding: 120px 40px;
+    gap: 40px;
+  }
+  
+  .interaction-composition {
+    padding: 80px 40px 120px;
+  }
+  
+  .comp-large-image {
+    width: 80%;
+  }
+  
+  .comp-small-image {
+    width: 45%;
+    left: 0;
+  }
+  
+  .values-horizontal {
+    padding: 60px 40px 80px;
+  }
+  
+  .final-cta {
+    padding: 0 40px 80px;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .cta-image-wrapper {
+    max-width: 100%;
+    width: 100%;
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-editorial {
+    padding: 80px 24px 40px;
+  }
+  
+  .hero-title {
+    font-size: 64px;
+  }
+  
+  .hero-image-wrapper {
+    width: 100%;
+    margin-top: 40px;
+  }
+  
+  .story-two-col {
+    padding: 80px 24px;
+  }
+  
+  .interaction-composition {
+    padding: 80px 24px 80px;
+  }
+  
+  .composition-grid {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .comp-large-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+  }
+  
+  .comp-small-image {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  
+  .values-horizontal {
+    padding: 40px 24px 80px;
+  }
+  
+  .value-row {
+    flex-direction: column;
+    padding: 30px 0;
+  }
+  
+  .val-num {
+    font-size: 56px;
+    margin-bottom: 16px;
+  }
+  
+  .val-content h3 {
+    font-size: 32px;
+  }
+  
+  .cinematic-text h2 {
+    font-size: 48px;
+  }
+  
+  .final-cta {
+    padding: 0 24px 80px;
+  }
+  
+  .cta-container h2 {
+    font-size: 48px;
+  }
+}

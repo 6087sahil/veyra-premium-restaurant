@@ -1,0 +1,26 @@
+.veyra-toast {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--color-bg, #241B16);
+  color: var(--color-text-heading, #FDFBF7);
+  padding: 16px 24px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+}
+
+html:not(.dark) .veyra-toast {
+  background-color: #241B16;
+  color: #FDFBF7;
+}
+
+.toast-icon {
+  color: var(--color-accent, #C69B60);
+}

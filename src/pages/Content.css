@@ -1,0 +1,466 @@
+/* ==========================================================================
+   VEYRA JOURNAL / CONTENT PAGE
+   ========================================================================== */
+
+.content-page-v2 {
+  --color-bg: #F3EBDD;
+  --color-card-bg: #F8F2E8;
+  --color-text-heading: #241B16;
+  --color-text-body: #4A3B32;
+  --color-text-muted: #6F6257;
+  --color-accent: #855B32;
+  --color-border: #D8C9B5;
+
+  background-color: var(--color-bg);
+  color: var(--color-text-body);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
+html.dark .content-page-v2 {
+  --color-bg: #161616;
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-text-heading: #FDFBF7;
+  --color-text-body: rgba(253, 251, 247, 0.85);
+  --color-text-muted: rgba(253, 251, 247, 0.7);
+  --color-accent: #C69B60;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+.content-page-v2 h1,
+.content-page-v2 h2,
+.content-page-v2 h3,
+.content-page-v2 h4 {
+  font-family: 'Ysabeau SC', serif;
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-text-heading);
+}
+
+/* ==========================================================================
+   1. PREMIUM HERO
+   ========================================================================== */
+.journal-hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.journal-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.journal-title {
+  font-size: clamp(64px, 8vw, 100px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.journal-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 60px;
+  color: var(--color-text-muted);
+}
+
+.journal-hero-image-wrapper {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+html.dark .journal-hero-image-wrapper {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.journal-hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   2. FEATURED STORY
+   ========================================================================== */
+.journal-featured {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 160px 80px;
+}
+
+.featured-layout {
+  display: flex;
+  gap: 120px;
+  align-items: center;
+}
+
+.featured-image {
+  flex: 1.2;
+  height: 700px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.featured-image:hover img {
+  transform: scale(1.03);
+}
+
+.featured-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.featured-label {
+  font-size: 12px;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.featured-title {
+  font-size: 48px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.featured-desc {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* Base button styles matching site */
+.btn-gold-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  padding: 16px 32px;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 40px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+html.dark .btn-gold-solid {
+  color: #161616;
+}
+
+.btn-gold-solid:hover {
+  background-color: #976A3D;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. LATEST STORIES (GRID)
+   ========================================================================== */
+.journal-grid-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 160px 80px;
+}
+
+.section-title {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--color-text-heading);
+  margin-bottom: 60px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 24px;
+}
+
+.journal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.story-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.story-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .story-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-img-wrapper {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.story-card:hover .card-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.card-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.card-desc {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  flex: 1;
+}
+
+.card-read-more {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-text-heading);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   4. INGREDIENTS SECTION (FROM THE SOURCE)
+   ========================================================================== */
+.journal-ingredients {
+  background-color: var(--color-card-bg);
+  padding: 160px 0;
+  margin: 120px 0;
+}
+
+.ingredients-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.ingredients-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.ingredients-header h2 {
+  font-size: 56px;
+  margin-bottom: 24px;
+}
+
+.ingredients-header p {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ingredients-row {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.ingredient-item {
+  flex: 1;
+  max-width: 380px;
+  text-align: center;
+}
+
+.ingredient-img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.ingredient-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ingredient-item h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.ingredient-item p {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   5. CHEF'S NOTE
+   ========================================================================== */
+.journal-chef-note {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 160px 80px;
+  text-align: center;
+}
+
+.chef-label {
+  font-size: 12px;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 32px;
+}
+
+.chef-quote {
+  font-family: var(--font-logo);
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.2;
+  color: var(--color-text-heading);
+  margin-bottom: 48px;
+}
+
+/* ==========================================================================
+   6. NEWSLETTER / FINAL CTA
+   ========================================================================== */
+.journal-newsletter {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 40px 160px;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+
+.journal-newsletter h2 {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.journal-newsletter p {
+  font-size: 17px;
+  color: var(--color-text-muted);
+  margin-bottom: 40px;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 30px;
+  padding: 16px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: var(--color-text-body);
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .featured-layout {
+    flex-direction: column;
+  }
+  
+  .featured-image {
+    height: 500px;
+    width: 100%;
+  }
+  
+  .journal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ingredients-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .journal-hero { padding: 120px 24px 60px; }
+  .journal-title { font-size: 56px; }
+  .journal-hero-image-wrapper { height: 40vh; min-height: 300px; }
+  
+  .journal-featured { padding: 40px 24px; }
+  .featured-image { height: 400px; }
+  .featured-title { font-size: 36px; }
+  
+  .journal-grid-section { padding: 60px 24px; }
+  .journal-grid { grid-template-columns: 1fr; }
+  
+  .journal-ingredients { padding: 80px 0; margin: 40px 0; }
+  .ingredients-container { padding: 0 24px; }
+  .ingredients-header h2 { font-size: 40px; }
+  
+  .journal-chef-note { padding: 80px 24px; }
+  .chef-quote { font-size: 32px; }
+  
+  .newsletter-form { flex-direction: column; }
+}
