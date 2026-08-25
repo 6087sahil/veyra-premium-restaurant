@@ -377,11 +377,26 @@ body {
     display: flex;
   }
   .header {
-    padding: 0 24px;
+    padding: 0 16px;
     height: 70px;
+  }
+  .actions-container {
+    gap: 8px;
   }
   .logo-text {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    padding: 0 12px;
+  }
+  .actions-container {
+    gap: 6px;
+  }
+  .logo-text {
+    display: none;
   }
 }
 
