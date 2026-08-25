@@ -643,11 +643,16 @@ html.dark .menu-page-v2 {
 @media (max-width: 768px) {
   .menu-hero { padding: 120px 24px 40px; }
   .menu-hero-title { font-size: 48px; }
-  .menu-hero-image-wrapper { height: 350px; }
+  .menu-hero-image-wrapper { height: 350px; min-height: auto; }
   
   .menu-nav-container { 
     padding: 0 0 40px; 
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .menu-nav-container::-webkit-scrollbar {
+    display: none;
   }
   .menu-nav {
     padding: 0 24px;
@@ -666,7 +671,7 @@ html.dark .menu-page-v2 {
   }
   .starter-image-wrapper, .starter-image-wide, .starter-image-small { 
     width: 100%; 
-    height: 400px; 
+    height: 300px; 
   }
   .starter-content-overlap {
     position: relative;
