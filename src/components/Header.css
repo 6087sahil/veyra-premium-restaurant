@@ -1,0 +1,668 @@
+/* ==========================================================================
+   Veyra Luxury Navigation Bar Styles
+   High-End Fine-Dining Brand Aesthetic
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700&display=swap');
+
+/* ==========================================================================
+   HEADER CONTAINER (STICKY / FIXED)
+   ========================================================================== */
+.veyra-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 84px;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  z-index: 1000;
+  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              backdrop-filter 0.3s ease,
+              -webkit-backdrop-filter 0.3s ease,
+              box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+.veyra-header *,
+.veyra-header *::before,
+.veyra-header *::after {
+  box-sizing: border-box;
+}
+
+/* Scrolled State (> 40px scroll) */
+.veyra-header.is-scrolled {
+  height: 68px;
+  background-color: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Header Max-Width Inner Wrapper */
+.veyra-header-inner {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* ==========================================================================
+   PART 1 (LEFT): NAVIGATION LINKS
+   ========================================================================== */
+.veyra-nav-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.veyra-nav-list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.veyra-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.veyra-nav-link {
+  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #e5e5e5;
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+/* Animated Thin Gold Underline (Width 0 to 100%, 0.3s ease from left) */
+.veyra-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: #C49A5A;
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.veyra-nav-link:hover,
+.veyra-nav-link:focus-visible,
+.veyra-nav-link.active {
+  color: #C49A5A;
+}
+
+.veyra-nav-link:hover::after,
+.veyra-nav-link:focus-visible::after,
+.veyra-nav-link.active::after {
+  width: 100%;
+}
+
+.veyra-nav-link:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   PART 2 (CENTER): "VEYRA" WORDMARK
+   ========================================================================== */
+.veyra-nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.veyra-brand-wordmark {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 1;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.veyra-brand-wordmark:hover {
+  color: #C49A5A;
+}
+
+.veyra-brand-wordmark:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   PART 3 (RIGHT): AUXILIARY LINK & "RESERVE A TABLE" BUTTON
+   ========================================================================== */
+.veyra-nav-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+/* Small phone or location link */
+.veyra-aux-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #d1d1d1;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.veyra-aux-link:hover,
+.veyra-aux-link:focus-visible {
+  color: #C49A5A;
+}
+
+.veyra-aux-link:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.veyra-aux-icon {
+  color: #C49A5A;
+  flex-shrink: 0;
+}
+
+/* Cart trigger if cart has items */
+.veyra-cart-trigger {
+  position: relative;
+  background: none;
+  border: none;
+  color: #e5e5e5;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.veyra-cart-trigger:hover {
+  color: #C49A5A;
+  transform: scale(1.05);
+}
+
+.veyra-cart-badge {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  background-color: #C49A5A;
+  color: #141414;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 9px;
+  font-weight: 700;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* "Reserve a Table" Button (Pill-shaped, Gold Solid, Dark Text) */
+.veyra-reserve-btn {
+  background-color: #C49A5A;
+  color: #141414;
+  border: 1px solid #C49A5A;
+  border-radius: 9999px;
+  padding: 10px 22px;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.25s ease,
+              color 0.25s ease;
+}
+
+.veyra-reserve-btn:hover {
+  background-color: #d4a853;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 154, 90, 0.25);
+}
+
+.veyra-reserve-btn:active {
+  transform: translateY(0);
+}
+
+.veyra-reserve-btn:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   HAMBURGER BUTTON (MOBILE)
+   ========================================================================== */
+.veyra-hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2200;
+  position: relative;
+}
+
+.veyra-hamburger-btn:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 4px;
+}
+
+.veyra-hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease,
+              background-color 0.3s ease;
+  transform-origin: center;
+}
+
+/* Morph into an X */
+.veyra-hamburger-btn.is-active .line-1 {
+  transform: translateY(9px) rotate(45deg);
+  background-color: #C49A5A;
+}
+
+.veyra-hamburger-btn.is-active .line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.veyra-hamburger-btn.is-active .line-3 {
+  transform: translateY(-9px) rotate(-45deg);
+  background-color: #C49A5A;
+}
+
+/* ==========================================================================
+   FULL-SCREEN MOBILE MENU OVERLAY
+   ========================================================================== */
+.veyra-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0d0d0d;
+  background-image: radial-gradient(circle at 50% 30%, rgba(196, 154, 90, 0.05) 0%, transparent 70%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 100px 32px 48px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.veyra-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+.veyra-mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.veyra-mobile-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.veyra-mobile-nav-link {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.veyra-mobile-nav-link:hover,
+.veyra-mobile-nav-link:focus-visible,
+.veyra-mobile-nav-link.active {
+  color: #C49A5A;
+  transform: scale(1.03);
+}
+
+.veyra-mobile-nav-link:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 6px;
+}
+
+/* Mobile Footer Area (Reserve Button + Socials) */
+.veyra-mobile-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 100%;
+  max-width: 320px;
+  margin: 40px auto 0;
+}
+
+.veyra-mobile-reserve-btn {
+  width: 100%;
+  background-color: #C49A5A;
+  color: #141414;
+  border: 1px solid #C49A5A;
+  border-radius: 9999px;
+  padding: 15px 28px;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px rgba(196, 154, 90, 0.25);
+}
+
+.veyra-mobile-reserve-btn:hover {
+  background-color: #d4a853;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196, 154, 90, 0.35);
+}
+
+.veyra-mobile-reserve-btn:focus-visible {
+  outline: 2px solid #C49A5A;
+  outline-offset: 4px;
+}
+
+/* Mobile Social Icons */
+.veyra-mobile-socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.veyra-mobile-social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d9d9d9;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.veyra-mobile-social-icon:hover,
+.veyra-mobile-social-icon:focus-visible {
+  background-color: #C49A5A;
+  border-color: #C49A5A;
+  color: #141414;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RESERVATION MODAL
+   ========================================================================== */
+.veyra-res-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.veyra-res-modal {
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  padding: 36px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  position: relative;
+}
+
+.veyra-res-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 16px;
+}
+
+.veyra-res-modal-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: #ffffff;
+}
+
+.veyra-res-modal-close {
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.veyra-res-modal-close:hover {
+  color: #C49A5A;
+}
+
+.veyra-res-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.veyra-res-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.veyra-res-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b3b3b3;
+}
+
+.veyra-res-select,
+.veyra-res-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.veyra-res-select option {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.veyra-res-select:focus,
+.veyra-res-input:focus {
+  border-color: #C49A5A;
+}
+
+.veyra-res-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.veyra-res-submit-btn {
+  background-color: #C49A5A;
+  color: #141414;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.veyra-res-submit-btn:hover {
+  background-color: #d4a853;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(196, 154, 90, 0.3);
+}
+
+.veyra-res-confirmed {
+  text-align: center;
+  padding: 24px 0 12px;
+}
+
+.veyra-res-confirmed-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: rgba(196, 154, 90, 0.15);
+  color: #C49A5A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.veyra-res-confirmed-title {
+  font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.veyra-res-confirmed-desc {
+  font-size: 14px;
+  color: #a8a8a8;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE (UNDER 900PX)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .veyra-header {
+    height: 74px;
+  }
+
+  .veyra-header.is-scrolled {
+    height: 64px;
+  }
+
+  .veyra-header-inner {
+    padding: 0 24px;
+  }
+
+  /* Hide desktop left nav */
+  .veyra-nav-left {
+    display: none;
+  }
+
+  /* Hide desktop right aux link and reserve button */
+  .veyra-aux-link,
+  .veyra-nav-right .veyra-reserve-btn {
+    display: none;
+  }
+
+  /* Wordmark moves to the left on mobile */
+  .veyra-nav-center {
+    justify-content: flex-start;
+  }
+
+  .veyra-brand-wordmark {
+    font-size: 25px;
+    letter-spacing: 0.14em;
+  }
+
+  /* Hamburger appears on the right */
+  .veyra-hamburger-btn {
+    display: flex;
+  }
+}
+

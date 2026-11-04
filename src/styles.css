@@ -299,48 +299,7 @@ html.dark .contact-btn:hover {
   color: var(--text-dark);
 }
 
-/* Footer Section */
-.footer-bar {
-  background-color: #855B32;
-  height: 48px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  padding: 0 80px;
-}
-
-.footer-left {
-  font-size: 20px;
-  font-weight: 510;
-  color: var(--white);
-  justify-self: start;
-}
-
-.footer-center {
-  font-size: 14px;
-  font-weight: 510;
-  color: var(--white);
-  text-align: center;
-}
-
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-self: end;
-}
-
-.social-icon {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-light);
-  border-radius: 16px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
+/* Footer Section moved to components/Footer.css */
 
 /* Announcement Bar */
 .announcement-bar {
@@ -509,14 +468,5 @@ html.dark .contact-btn:hover {
     text-align: center;
   }
   
-  .footer-bar {
-    height: auto;
-    padding: 24px;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    text-align: center;
-  }
-  .footer-left, .footer-center, .footer-right {
-    justify-self: center;
-  }
+  
 }

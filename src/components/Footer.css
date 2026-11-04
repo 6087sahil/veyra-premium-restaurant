@@ -1,0 +1,582 @@
+/* ==========================================================================
+   Veyra Modern Multi-Column Footer Styles
+   Dark Luxury Fashion-Brand Inspired Layout
+   ========================================================================== */
+
+.veyra-footer {
+  width: 100%;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  padding: 64px 0 32px;
+  font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+}
+
+.veyra-footer *,
+.veyra-footer *::before,
+.veyra-footer *::after {
+  box-sizing: border-box;
+}
+
+.footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ==========================================================================
+   TOP SECTION: 4 EQUAL COLUMNS
+   ========================================================================== */
+.footer-top-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px;
+  margin-bottom: 56px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Column Header */
+.footer-col-header {
+  margin-bottom: 24px;
+}
+
+.footer-col-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+}
+
+.footer-accordion-icon {
+  display: none;
+  width: 18px;
+  height: 18px;
+  color: #d9d9d9;
+  transition: transform 0.3s ease, color 0.2s ease;
+}
+
+/* Navigation Links List */
+.footer-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav-link {
+  color: #d9d9d9;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
+  line-height: 1.4;
+}
+
+.footer-nav-link:hover,
+.footer-nav-link:focus-visible {
+  color: #C49A5A;
+  transform: translateX(3px);
+  outline: none;
+}
+
+/* Column 4: Join Our Table / Newsletter */
+.footer-newsletter-text {
+  color: #b3b3b3;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+  font-weight: 400;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.footer-input-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.footer-email-input {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 2px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-size: 13px;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  min-width: 0;
+}
+
+.footer-email-input::placeholder {
+  color: #7a7a7a;
+}
+
+.footer-email-input:focus {
+  border-color: #C49A5A;
+  background-color: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.footer-subscribe-btn {
+  background-color: #C49A5A;
+  color: #141414;
+  border: none;
+  border-radius: 2px;
+  padding: 12px 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-subscribe-btn:hover {
+  background-color: #d4a853;
+  transform: translateY(-1px);
+}
+
+.footer-subscribe-btn:active {
+  transform: translateY(0);
+}
+
+.footer-signup-link-wrap {
+  margin-top: 8px;
+}
+
+.footer-signup-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-signup-link:hover {
+  color: #C49A5A;
+}
+
+.footer-newsletter-feedback {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #C49A5A;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   DIVIDER LINE
+   ========================================================================== */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  margin: 0 0 40px 0;
+}
+
+/* ==========================================================================
+   MIDDLE SECTION: BRAND LOGO + LOCATION
+   ========================================================================== */
+.footer-middle-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.footer-brand-title {
+  font-family: var(--font-logo, 'Ysabeau SC', 'Cinzel', serif);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.footer-brand-title:hover {
+  color: #C49A5A;
+}
+
+.footer-location-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 13px;
+  color: #d9d9d9;
+}
+
+.footer-location-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #b3b3b3;
+  letter-spacing: 0.03em;
+}
+
+.footer-location-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #C49A5A;
+}
+
+.footer-change-loc-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d9d9d9;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.footer-change-loc-btn:hover {
+  color: #C49A5A;
+}
+
+/* Location Selection Popover / Modal */
+.location-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.location-modal {
+  background-color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  width: 100%;
+  max-width: 440px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  position: relative;
+}
+
+.location-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.location-modal-title {
+  font-family: var(--font-logo, 'Ysabeau SC', serif);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+  color: #ffffff;
+}
+
+.location-modal-close {
+  background: none;
+  border: none;
+  color: #a0a0a0;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.location-modal-close:hover {
+  color: #C49A5A;
+}
+
+.location-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.location-option {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: #d9d9d9;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.location-option:hover {
+  background-color: rgba(196, 154, 90, 0.12);
+  border-color: #C49A5A;
+  color: #ffffff;
+}
+
+.location-option.active {
+  background-color: rgba(196, 154, 90, 0.18);
+  border-color: #C49A5A;
+  color: #C49A5A;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   BOTTOM ROW: COPYRIGHT + SOCIAL ICONS
+   ========================================================================== */
+.footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright {
+  color: #8c8c8c;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Circular Social Icon Button */
+.footer-social-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d9d9d9;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-social-circle:hover,
+.footer-social-circle:focus-visible {
+  background-color: #C49A5A;
+  border-color: #C49A5A;
+  color: #141414;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(196, 154, 90, 0.35);
+  outline: none;
+}
+
+.footer-social-circle svg {
+  display: block;
+}
+
+/* Visually Hidden Helper for Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .footer-top-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 32px;
+    margin-bottom: 48px;
+  }
+
+  .footer-container {
+    padding: 0 32px;
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .veyra-footer {
+    padding: 48px 0 32px;
+  }
+
+  .footer-container {
+    padding: 0 24px;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 36px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-col {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 18px 0;
+  }
+
+  .footer-col-header {
+    margin-bottom: 0;
+  }
+
+  .footer-col-title {
+    cursor: pointer;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    padding: 4px 0;
+  }
+
+  .footer-accordion-icon {
+    display: inline-block;
+  }
+
+  .footer-accordion-icon.open {
+    transform: rotate(180deg);
+    color: #C49A5A;
+  }
+
+  .footer-nav-wrapper {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, margin-top 0.3s ease;
+    margin-top: 0;
+  }
+
+  .footer-nav-wrapper.expanded {
+    max-height: 350px;
+    opacity: 1;
+    margin-top: 16px;
+  }
+
+  /* Newsletter section on mobile */
+  .footer-col-newsletter {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 24px;
+  }
+
+  .footer-col-newsletter .footer-col-title {
+    cursor: default;
+    margin-bottom: 12px;
+  }
+
+  .footer-input-row {
+    flex-direction: column;
+  }
+
+  .footer-subscribe-btn {
+    width: 100%;
+    padding: 13px;
+  }
+
+  .footer-middle-section {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .footer-location-container {
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-divider {
+    margin-bottom: 32px;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column-reverse;
+    gap: 24px;
+    text-align: center;
+    padding-top: 24px;
+  }
+
+  .footer-social-links {
+    justify-content: center;
+  }
+}
+
