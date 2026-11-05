@@ -63,7 +63,7 @@ const Home = () => {
             poster="/home_hero.jpg"
             className="home-hero-video"
           >
-            <source src="/456049cf45bc3700c8a9a369db866649_720w.mp4" type="video/mp4" />
+            <source src="/000.mp4" type="video/mp4" />
           </video>
           {/* Bottom-up gradient overlay */}
           <div className="hero-gradient-overlay" />
