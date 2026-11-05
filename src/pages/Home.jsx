@@ -48,128 +48,66 @@ const Home = () => {
 
   return (
     <main className="home-page-v2">
-      {/* 1. Premium Hero Section */}
+      {/* 1. Quiet Luxury Hero Section */}
       <section className="home-hero">
         <div className="home-hero-bg">
           <img 
             src="/home_hero.jpg" 
-            alt="Veyra Dining Experience" 
+            alt="Couple dining at Veyra" 
             className="home-hero-img"
           />
-          {/* Layered cinematic overlays */}
+          {/* Smooth gradient overlays */}
           <div className="hero-gradient-overlay" />
-          <div className="hero-vignette-overlay" />
           <div className="hero-bottom-fade" />
         </div>
 
-        <div className="home-hero-container">
-          <div className="home-hero-content">
-            {/* Eyebrow */}
-            <motion.div 
-              className="hero-eyebrow"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            >
-              <span className="hero-eyebrow-line" aria-hidden="true" />
-              <span className="hero-eyebrow-text">WELCOME TO VEYRA</span>
-              <span className="hero-eyebrow-line" aria-hidden="true" />
-            </motion.div>
-            
-            {/* Headline */}
-            <h1 className="home-hero-title">
-              <span className="title-row">
-                <motion.span 
-                  className="title-row-inner"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.22 }}
-                >
-                  FLAVORS
-                </motion.span>
-              </span>
-              <span className="title-row">
-                <motion.span 
-                  className="title-row-inner"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.34 }}
-                >
-                  WORTH
-                </motion.span>
-              </span>
-              <span className="title-row">
-                <motion.span 
-                  className="title-row-inner text-gold font-italic"
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.46 }}
-                >
-                  REMEMBERING.
-                </motion.span>
-              </span>
-            </h1>
+        <div className="home-hero-content">
+          {/* 1. Small Eyebrow */}
+          <motion.div 
+            className="hero-eyebrow"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
+          >
+            WELCOME TO VEYRA
+          </motion.div>
+          
+          {/* 2. Headline: 2 lines only, Cormorant Garamond, weight 400, not bold, not uppercase */}
+          <motion.h1 
+            className="home-hero-title"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
+          >
+            <span className="hero-title-line">Flavors worth</span>
+            <span className="hero-title-line text-gold font-italic">remembering.</span>
+          </motion.h1>
 
-            {/* Paragraph */}
-            <motion.p 
-              className="home-hero-subtitle"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.58 }}
-            >
-              Where fresh ingredients, thoughtful craft and unforgettable moments come together.
-            </motion.p>
+          {/* 3. Short Paragraph (32px below headline) */}
+          <motion.p 
+            className="home-hero-subtitle"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
+          >
+            Where fresh ingredients, thoughtful craft, and unforgettable moments come together.
+          </motion.p>
 
-            {/* Buttons */}
-            <motion.div 
-              className="home-hero-actions"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
-            >
-              <Link to="/menu" className="hero-btn-explore">
-                <span>EXPLORE MENU</span>
-                <span className="hero-btn-arr" aria-hidden="true">&rarr;</span>
-              </Link>
-              <Link to="/about" className="hero-btn-story">
-                <span>OUR STORY</span>
-                <span className="hero-btn-arr" aria-hidden="true">&rarr;</span>
-              </Link>
-            </motion.div>
-
-            {/* Trust Row */}
-            <motion.div 
-              className="hero-trust-row"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.82 }}
-            >
-              <span className="hero-trust-item">
-                <span className="hero-trust-star">★</span> 4.9 Rating
-              </span>
-              <span className="hero-trust-divider" aria-hidden="true">·</span>
-              <span className="hero-trust-item">2,000+ Happy Guests</span>
-              <span className="hero-trust-divider" aria-hidden="true">·</span>
-              <span className="hero-trust-item">Open Daily 12–11pm</span>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Floating Side Info */}
-        <div className="hero-floating-info left" aria-hidden="true">
-          FRESH • LOCAL • CRAFTED
-        </div>
-
-        <div className="hero-floating-info right" aria-hidden="true">
-          EST. 2024
-        </div>
-
-        {/* Centered Scroll Indicator */}
-        <div className="hero-scroll-indicator" aria-hidden="true">
-          <span className="hero-scroll-text">SCROLL</span>
-          <div className="hero-scroll-track">
-            <div className="hero-scroll-dot" />
-          </div>
+          {/* 4. Two Buttons (40px below paragraph, 16px gap) */}
+          <motion.div 
+            className="home-hero-actions"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: 'easeOut', delay: 0.4 }}
+          >
+            <Link to="/menu" className="hero-btn-explore">
+              EXPLORE MENU
+            </Link>
+            <Link to="/about" className="hero-btn-story-link">
+              <span className="hero-story-text">Our Story</span>
+              <span className="hero-story-arr" aria-hidden="true">&rarr;</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
