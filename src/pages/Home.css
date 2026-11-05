@@ -49,7 +49,7 @@ html.dark .home-page-v2 {
   box-sizing: border-box;
   background-color: #141414;
   border-top: none !important;
-  padding: 84px clamp(24px, 4vw, 48px) clamp(36px, 5vh, 56px);
+  padding: 0 clamp(24px, 6vw, 96px) clamp(48px, 8vh, 96px);
 }
 
 /* Background image: Full-screen couple dining, clean & bright top */
@@ -111,28 +111,27 @@ html.dark .home-page-v2 {
   box-sizing: border-box;
 }
 
-/* 1. Eyebrow: "WELCOME TO VEYRA" in gold, 11px, letter-spacing 0.25em, 36px gold line before it */
+/* 1. Eyebrow: "WELCOME TO VEYRA" in gold, 12px, letter-spacing 0.4em, 48px gold line before it */
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.4em;
   color: #C49A5A;
   text-transform: uppercase;
-  margin: 0 0 14px 0;
+  margin: 0 0 20px 0;
   line-height: 1;
 }
 
 .hero-eyebrow-line {
   display: inline-block;
-  width: 36px;
+  width: 48px;
   height: 1px;
   background-color: #C49A5A;
   flex-shrink: 0;
-  transform: translateY(0.5px);
 }
 
 .hero-eyebrow-text {
@@ -147,7 +146,7 @@ html.dark .home-page-v2 {
   line-height: 1.0;
   letter-spacing: -0.015em;
   color: #ffffff;
-  margin: 0 0 16px 0;
+  margin: 0 0 24px 0;
   text-transform: none;
 }
 
@@ -166,22 +165,22 @@ html.dark .home-page-v2 {
   font-style: italic;
 }
 
-/* 3. Paragraph: 16px, rgba(255,255,255,0.75), max-width 480px, 20px below headline */
+/* 3. Paragraph: 17px, rgba(255,255,255,0.75), max-width 480px, 24px below headline */
 .home-hero-subtitle {
   font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 17px;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
   max-width: 480px;
-  margin: 0 0 24px 0;
+  margin: 0 0 32px 0;
   font-weight: 400;
 }
 
-/* 4. Buttons: 24px below paragraph */
+/* 4. Buttons: 32px below paragraph */
 .home-hero-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
@@ -400,10 +399,6 @@ html.dark .home-page-v2 {
 
 /* Hero Responsive & Motion Overrides */
 @media (max-width: 1023px) {
-  .home-hero {
-    padding: 84px 32px clamp(36px, 6vh, 48px);
-  }
-
   .home-hero-grid {
     grid-template-columns: 1fr;
     gap: 36px;

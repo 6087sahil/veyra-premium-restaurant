@@ -68,19 +68,18 @@
 }
 
 /* ==========================================================================
-   LEFT COLUMN: NAVIGATION LINKS (justify-self end, balanced gap to wordmark)
+   LEFT COLUMN: NAVIGATION LINKS (justify-self start, 48px gap)
    ========================================================================== */
 .veyra-nav-left {
-  justify-self: end;
+  justify-self: start;
   display: flex;
   align-items: center;
-  margin-right: clamp(24px, 3vw, 40px);
 }
 
 .veyra-nav-list {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 1.8vw, 24px);
+  gap: 48px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -149,15 +148,15 @@
 
 .veyra-brand-wordmark {
   font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.3em;
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   line-height: 1;
   display: inline-block;
-  padding-left: 0.22em; /* Optically centers text with wide letter-spacing */
+  padding-left: 0.3em; /* Optically centers text with wide letter-spacing */
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -171,15 +170,13 @@
 }
 
 /* ==========================================================================
-   RIGHT COLUMN: REFINED RIGHT CLUSTER (justify-self start, balanced gap to wordmark)
+   RIGHT COLUMN: REFINED RIGHT CLUSTER (justify-self end)
    Order: Search -> Cart -> 1px Divider -> "Reserve a Table" Button
    ========================================================================== */
 .veyra-nav-right {
-  justify-self: start;
+  justify-self: end;
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-left: clamp(24px, 3vw, 40px);
 }
 
 /* Unified Icon Button Styling (Search & Cart) */
@@ -211,9 +208,9 @@
   border-radius: 4px;
 }
 
-/* 24px gap between Search and Cart handled by flex gap */
+/* 24px gap between Search and Cart */
 .veyra-cart-btn {
-  margin-left: 0;
+  margin-left: 24px;
 }
 
 /* Cart Badge: 16px circle, top: -6px, right: -8px */
@@ -237,13 +234,13 @@
 }
 
 /* Vertical Divider: 1px width, 24px height, rgba(255,255,255,0.15) */
-/* 24px gap from Cart, 32px gap to Button (24px flex gap + 8px margin-right) */
+/* 24px gap from Cart to Divider, 32px gap from Divider to Button */
 .veyra-nav-divider {
   width: 1px;
   height: 24px;
   background-color: rgba(255, 255, 255, 0.15);
-  margin-left: 0;
-  margin-right: 8px;
+  margin-left: 24px;
+  margin-right: 32px;
 }
 
 /* Refined "Reserve a Table" Button */
@@ -1010,7 +1007,6 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-left: 0;
   }
 
   .veyra-cart-btn {
