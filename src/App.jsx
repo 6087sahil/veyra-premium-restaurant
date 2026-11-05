@@ -12,6 +12,7 @@ import { AppProvider } from './context/AppContext';
 import Cart from './components/Cart';
 import SearchOverlay from './components/SearchOverlay';
 import Toast from './components/Toast';
+import LoadingScreen from './components/LoadingScreen';
 import './index.css';
 import './styles.css';
 
@@ -21,6 +22,7 @@ function App() {
       <MotionConfig reducedMotion="user">
         <BrowserRouter>
           <div className="app-container">
+            <LoadingScreen />
             <Header />
             <SearchOverlay />
             <Cart />
