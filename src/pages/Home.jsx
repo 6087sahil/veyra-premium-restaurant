@@ -55,11 +55,17 @@ const Home = () => {
       {/* 1. Bottom-Anchored Editorial Hero Section */}
       <section className="home-hero">
         <div className="home-hero-bg">
-          <img 
-            src="/home_hero.jpg" 
-            alt="Couple dining at Veyra" 
-            className="home-hero-img"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="/home_hero.jpg"
+            className="home-hero-video"
+          >
+            <source src="/watermark_removed (2).mp4" type="video/mp4" />
+            <source src="/hero_video.mp4" type="video/mp4" />
+          </video>
           {/* Bottom-up gradient overlay */}
           <div className="hero-gradient-overlay" />
         </div>
