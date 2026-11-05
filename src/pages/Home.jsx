@@ -1,9 +1,17 @@
-import React, { useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { Calendar, Users, Clock, ChevronDown, Check } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
 import './Home.css';
+
+const DATE_OPTIONS = ['Today', 'Tomorrow', 'Fri, Nov 6', 'Sat, Nov 7', 'Sun, Nov 8'];
+const GUEST_OPTIONS = ['1 Person', '2 People', '3 People', '4 People', '5 People', '6 People', '7 People', '8 People'];
+const TIME_OPTIONS = [
+  '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
+  '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM',
+  '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM', '10:30 PM'
+];
 
 // Reusable animation variants
 const textContainer = {
@@ -31,9 +39,33 @@ const imageClip = {
 
 const Home = () => {
   const { setIsReservationOpen } = useAppContext();
+  const [selectedDate, setSelectedDate] = useState('Today');
+  const [selectedGuests, setSelectedGuests] = useState('2 People');
+  const [selectedTime, setSelectedTime] = useState('7:30 PM');
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const cardRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setActiveDropdown(null);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const { scrollY } = useScroll();
@@ -112,47 +144,162 @@ const Home = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            ref={cardRef}
           >
             <div className="hero-res-card-inner">
-              <div className="hero-res-label">RESERVE YOUR TABLE</div>
+              {/* Header */}
+              <div className="hero-res-header">
+                <span className="hero-res-eyebrow">RESERVATIONS</span>
+                <h2 className="hero-res-title">Reserve your table</h2>
+                <div className="hero-res-divider" aria-hidden="true" />
+              </div>
 
               {/* Three interactive rows: Date, Guests, Time */}
               <div className="hero-res-rows">
-                <button 
-                  type="button" 
-                  className="hero-res-row" 
-                  onClick={() => setIsReservationOpen(true)}
-                  aria-label="Select reservation date"
-                >
-                  <span className="hero-res-key">Date</span>
-                  <span className="hero-res-val">
-                    Today <ChevronRight size={14} className="hero-res-chevron" aria-hidden="true" />
-                  </span>
-                </button>
+                {/* 1. Date Row */}
+                <div className="hero-res-row-wrapper">
+                  <button 
+                    type="button" 
+                    className={`hero-res-row ${activeDropdown === 'date' ? 'is-active' : ''}`}
+                    onClick={() => setActiveDropdown(activeDropdown === 'date' ? null : 'date')}
+                    aria-label="Select reservation date"
+                    aria-expanded={activeDropdown === 'date'}
+                    aria-haspopup="listbox"
+                  >
+                    <div className="hero-res-row-left">
+                      <Calendar size={20} strokeWidth={1.5} className="hero-res-icon" aria-hidden="true" />
+                      <div className="hero-res-text-group">
+                        <span className="hero-res-row-label">DATE</span>
+                        <span className="hero-res-row-value">{selectedDate}</span>
+                      </div>
+                    </div>
+                    <ChevronDown size={14} className={`hero-res-chevron ${activeDropdown === 'date' ? 'is-open' : ''}`} aria-hidden="true" />
+                  </button>
 
-                <button 
-                  type="button" 
-                  className="hero-res-row" 
-                  onClick={() => setIsReservationOpen(true)}
-                  aria-label="Select number of guests"
-                >
-                  <span className="hero-res-key">Guests</span>
-                  <span className="hero-res-val">
-                    2 People <ChevronRight size={14} className="hero-res-chevron" aria-hidden="true" />
-                  </span>
-                </button>
+                  <AnimatePresence>
+                    {activeDropdown === 'date' && (
+                      <motion.div 
+                        className="hero-res-popover"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.2 }}
+                        role="listbox"
+                      >
+                        {DATE_OPTIONS.map((opt) => (
+                          <button
+                            key={opt}
+                            type="button"
+                            className={`hero-res-option ${selectedDate === opt ? 'is-selected' : ''}`}
+                            onClick={() => { setSelectedDate(opt); setActiveDropdown(null); }}
+                            role="option"
+                            aria-selected={selectedDate === opt}
+                          >
+                            <span>{opt}</span>
+                            {selectedDate === opt && <Check size={14} className="hero-res-check" aria-hidden="true" />}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
-                <button 
-                  type="button" 
-                  className="hero-res-row" 
-                  onClick={() => setIsReservationOpen(true)}
-                  aria-label="Select reservation time"
-                >
-                  <span className="hero-res-key">Time</span>
-                  <span className="hero-res-val">
-                    7:30 PM <ChevronRight size={14} className="hero-res-chevron" aria-hidden="true" />
-                  </span>
-                </button>
+                {/* 2. Guests Row */}
+                <div className="hero-res-row-wrapper">
+                  <button 
+                    type="button" 
+                    className={`hero-res-row ${activeDropdown === 'guests' ? 'is-active' : ''}`}
+                    onClick={() => setActiveDropdown(activeDropdown === 'guests' ? null : 'guests')}
+                    aria-label="Select number of guests"
+                    aria-expanded={activeDropdown === 'guests'}
+                    aria-haspopup="listbox"
+                  >
+                    <div className="hero-res-row-left">
+                      <Users size={20} strokeWidth={1.5} className="hero-res-icon" aria-hidden="true" />
+                      <div className="hero-res-text-group">
+                        <span className="hero-res-row-label">GUESTS</span>
+                        <span className="hero-res-row-value">{selectedGuests}</span>
+                      </div>
+                    </div>
+                    <ChevronDown size={14} className={`hero-res-chevron ${activeDropdown === 'guests' ? 'is-open' : ''}`} aria-hidden="true" />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === 'guests' && (
+                      <motion.div 
+                        className="hero-res-popover"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.2 }}
+                        role="listbox"
+                      >
+                        {GUEST_OPTIONS.map((opt) => (
+                          <button
+                            key={opt}
+                            type="button"
+                            className={`hero-res-option ${selectedGuests === opt ? 'is-selected' : ''}`}
+                            onClick={() => { setSelectedGuests(opt); setActiveDropdown(null); }}
+                            role="option"
+                            aria-selected={selectedGuests === opt}
+                          >
+                            <span>{opt}</span>
+                            {selectedGuests === opt && <Check size={14} className="hero-res-check" aria-hidden="true" />}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* 3. Time Row */}
+                <div className="hero-res-row-wrapper">
+                  <button 
+                    type="button" 
+                    className={`hero-res-row hero-res-row-last ${activeDropdown === 'time' ? 'is-active' : ''}`}
+                    onClick={() => setActiveDropdown(activeDropdown === 'time' ? null : 'time')}
+                    aria-label="Select reservation time"
+                    aria-expanded={activeDropdown === 'time'}
+                    aria-haspopup="listbox"
+                  >
+                    <div className="hero-res-row-left">
+                      <Clock size={20} strokeWidth={1.5} className="hero-res-icon" aria-hidden="true" />
+                      <div className="hero-res-text-group">
+                        <span className="hero-res-row-label">TIME</span>
+                        <span className="hero-res-row-value">{selectedTime}</span>
+                      </div>
+                    </div>
+                    <ChevronDown size={14} className={`hero-res-chevron ${activeDropdown === 'time' ? 'is-open' : ''}`} aria-hidden="true" />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === 'time' && (
+                      <motion.div 
+                        className="hero-res-popover hero-res-popover-time"
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.2 }}
+                        role="listbox"
+                      >
+                        <div className="hero-res-time-grid">
+                          {TIME_OPTIONS.map((opt) => (
+                            <button
+                              key={opt}
+                              type="button"
+                              className={`hero-res-time-btn ${selectedTime === opt ? 'is-selected' : ''}`}
+                              onClick={() => { setSelectedTime(opt); setActiveDropdown(null); }}
+                              role="option"
+                              aria-selected={selectedTime === opt}
+                            >
+                              {opt}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
 
               {/* Gold full-width button */}
@@ -160,13 +307,20 @@ const Home = () => {
                 type="button" 
                 className="hero-res-submit-btn" 
                 onClick={() => setIsReservationOpen(true)}
+                aria-label="Check table availability"
               >
-                <span className="hero-btn-label-desktop">Check Availability</span>
-                <span className="hero-btn-label-mobile">Reserve a Table</span>
+                <span className="hero-btn-label-desktop">
+                  Check Availability <span className="hero-btn-arrow" aria-hidden="true">&rarr;</span>
+                </span>
+                <span className="hero-btn-label-mobile">
+                  Reserve a Table <span className="hero-btn-arrow" aria-hidden="true">&rarr;</span>
+                </span>
               </button>
 
+              {/* Footer Line */}
               <div className="hero-res-footnote">
-                Open daily 12pm &ndash; 11pm
+                <span className="hero-res-dot" aria-hidden="true" />
+                <span>Open daily 12pm &ndash; 11pm</span>
               </div>
             </div>
           </motion.div>
