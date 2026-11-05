@@ -7,8 +7,8 @@
   --color-accent: #855B32;
   --color-border: #D8C9B5;
 
-  padding-top: 140px; /* Account for header */
-  min-height: 100vh;
+  padding-top: clamp(80px, 12vw, 140px); /* Account for header */
+  min-height: 100svh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -150,7 +150,7 @@ html.dark .signin-container {
   border-radius: 8px;
   color: var(--sign-in-text);
   font-family: var(--font-main);
-  font-size: 15px;
+  font-size: 16px;
   outline: none;
   transition: border-color 0.3s;
 }
@@ -317,10 +317,19 @@ html.dark .google-auth-btn:hover {
 
 @media (max-width: 768px) {
   .signin-container {
-    margin: 0 20px;
+    margin: 0 16px;
     min-height: auto;
   }
   .signin-form-col {
-    padding: 40px 24px;
+    padding: 32px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signin-container {
+    margin: 0 12px;
+  }
+  .signin-form-col {
+    padding: 24px 16px;
   }
 }

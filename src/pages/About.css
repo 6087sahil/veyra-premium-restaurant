@@ -55,11 +55,12 @@ html.dark .about-page-v2 {
 .hero-editorial {
   position: relative;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 100px 80px 80px;
+  padding: clamp(48px, 8vw, 100px) clamp(20px, 5vw, 64px) clamp(40px, 5vw, 80px);
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -69,7 +70,7 @@ html.dark .about-page-v2 {
 }
 
 .hero-eyebrow {
-  font-size: 14px;
+  font-size: clamp(11px, 1.5vw, 13px);
   letter-spacing: 2px;
   color: var(--color-text-muted);
   margin-bottom: 20px;
@@ -77,9 +78,9 @@ html.dark .about-page-v2 {
 }
 
 .hero-title {
-  font-size: clamp(80px, 10vw, 130px);
-  line-height: 0.9;
-  letter-spacing: 2px;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: 1px;
   margin-bottom: 0;
   color: var(--color-text-heading);
 }
@@ -91,7 +92,7 @@ html.dark .about-page-v2 {
 }
 
 .hero-subtitle {
-  font-size: 20px;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
   color: var(--color-text-body);
   line-height: 1.5;
   font-weight: 400;
@@ -463,39 +464,48 @@ html.dark .about-page-v2 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hero-editorial {
-    padding: 80px 24px 40px;
+    padding: clamp(32px, 6vw, 60px) clamp(20px, 5vw, 32px) 40px;
   }
   
   .hero-title {
-    font-size: 64px;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    line-height: 1.05;
   }
   
   .hero-image-wrapper {
     width: 100%;
-    margin-top: 40px;
+    height: auto;
+    aspect-ratio: 4/5;
+    min-height: unset;
+    margin-top: 32px;
   }
   
+  .hero-image {
+    height: 100%;
+  }
+
   .story-two-col {
-    padding: 80px 24px;
+    padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 32px);
   }
   
   .interaction-composition {
-    padding: 80px 24px 80px;
+    padding: clamp(48px, 8vw, 80px) clamp(20px, 5vw, 32px);
   }
   
   .composition-grid {
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
   }
   
   .comp-large-image {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: auto;
+    aspect-ratio: 4/3;
   }
   
   .comp-small-image {
@@ -507,61 +517,41 @@ html.dark .about-page-v2 {
   }
   
   .values-horizontal {
-    padding: 40px 24px 80px;
+    padding: clamp(32px, 5vw, 40px) clamp(20px, 5vw, 32px) clamp(48px, 8vw, 80px);
   }
   
   .value-row {
     flex-direction: column;
-    padding: 30px 0;
+    padding: 24px 0;
+    gap: 20px;
   }
   
   .val-num {
-    font-size: 56px;
-    margin-bottom: 16px;
+    font-size: 48px;
+    margin-bottom: 8px;
   }
   
   .val-content h3 {
-    font-size: 32px;
+    font-size: clamp(1.5rem, 5vw, 2rem);
   }
   
   .cinematic-text h2 {
-    font-size: 48px;
+    font-size: clamp(2rem, 6vw, 3rem);
   }
   
   .final-cta {
-    padding: 0 24px 80px;
+    padding: 0 clamp(20px, 5vw, 32px) clamp(48px, 8vw, 80px);
   }
   
   .cta-container h2 {
-    font-size: 48px;
+    font-size: clamp(2rem, 6vw, 3rem);
   }
 }
 
-@media (max-width: 767px) {
-  /* Mobile specific fixes */
-  body, .app-container, .about-page-v2 {
-    max-width: 100%;
-  }
-  .hero-editorial {
-    padding: 20px 24px 40px !important;
-  }
-  .hero-title {
-    font-size: 14vw !important; /* scale proportionally */
-    white-space: nowrap;
-  }
-  .hero-image-wrapper {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 4/5 !important;
-    min-height: unset !important;
-    margin-top: 20px !important;
-  }
-  .hero-image {
-    height: 100% !important;
-  }
-  .announcement-bar, .header {
-    max-width: 100%;
-    box-sizing: border-box;
+@media (max-width: 479px) {
+  .final-cta .btn-gold-solid {
+    width: 100%;
+    justify-content: center;
   }
 }
 

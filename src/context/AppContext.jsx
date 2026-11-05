@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
   // UI State
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isReservationOpen, setIsReservationOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
 
   // Sync cart to local storage
@@ -75,6 +76,8 @@ export const AppProvider = ({ children }) => {
       setIsSearchOpen,
       isCartOpen,
       setIsCartOpen,
+      isReservationOpen,
+      setIsReservationOpen,
       toastMessage,
       setToastMessage
     }}>

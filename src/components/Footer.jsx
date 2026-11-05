@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useAppContext } from '../context/AppContext';
 import './Footer.css';
 
 const LOCATIONS = [
@@ -13,6 +14,7 @@ const LOCATIONS = [
 ];
 
 const Footer = () => {
+  const { setIsReservationOpen } = useAppContext();
   // Mobile accordion state (columns 0, 1, 2)
   const [openAccordions, setOpenAccordions] = useState({});
   // Newsletter subscription state
@@ -23,6 +25,23 @@ const Footer = () => {
   // Location selector state
   const [currentLocation, setCurrentLocation] = useState('New Delhi, India');
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+
+  // Lock scroll and handle Escape for location modal
+  useEffect(() => {
+    if (isLocationModalOpen) {
+      document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setIsLocationModalOpen(false);
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = '';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [isLocationModalOpen]);
 
   const toggleAccordion = (colKey) => {
     setOpenAccordions((prev) => ({
@@ -51,13 +70,7 @@ const Footer = () => {
   };
 
   return (
-    <motion.footer 
-      className="veyra-footer"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
+    <footer className="veyra-footer">
       <div className="footer-container">
         {/* =================================================================
             TOP SECTION: 4 COLUMNS
@@ -98,16 +111,22 @@ const Footer = () => {
                   <Link to="/menu" className="footer-nav-link">Menu</Link>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#reservations" className="footer-nav-link">Reservations</a>
+                  <button 
+                    type="button" 
+                    className="footer-nav-link footer-nav-btn"
+                    onClick={() => setIsReservationOpen(true)}
+                  >
+                    Reservations
+                  </button>
                 </li>
                 <li className="footer-nav-item">
                   <Link to="/about" className="footer-nav-link">About Us</Link>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#gallery" className="footer-nav-link">Gallery</a>
+                  <Link to="/journal" className="footer-nav-link">Gallery</Link>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#events" className="footer-nav-link">Events</a>
+                  <a href="/#events" className="footer-nav-link">Events</a>
                 </li>
               </ul>
             </nav>
@@ -145,19 +164,31 @@ const Footer = () => {
             >
               <ul className="footer-nav-list">
                 <li className="footer-nav-item">
-                  <a href="#location" className="footer-nav-link">Location</a>
+                  <button 
+                    type="button" 
+                    className="footer-nav-link footer-nav-btn"
+                    onClick={() => setIsLocationModalOpen(true)}
+                  >
+                    Location
+                  </button>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#opening-hours" className="footer-nav-link">Opening Hours</a>
+                  <a href="/#events" className="footer-nav-link">Opening Hours</a>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#contact" className="footer-nav-link">Contact</a>
+                  <a href="mailto:concierge@veyra.com" className="footer-nav-link">Contact</a>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#private-dining" className="footer-nav-link">Private Dining</a>
+                  <button 
+                    type="button" 
+                    className="footer-nav-link footer-nav-btn"
+                    onClick={() => setIsReservationOpen(true)}
+                  >
+                    Private Dining
+                  </button>
                 </li>
                 <li className="footer-nav-item">
-                  <a href="#careers" className="footer-nav-link">Careers</a>
+                  <a href="mailto:careers@veyra.com" className="footer-nav-link">Careers</a>
                 </li>
               </ul>
             </nav>
@@ -442,7 +473,7 @@ const Footer = () => {
           </div>
         )}
       </AnimatePresence>
-    </motion.footer>
+    </footer>
   );
 };
 
