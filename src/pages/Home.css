@@ -35,24 +35,24 @@ html.dark .home-page-v2 {
 }
 
 /* ==========================================================================
-   2. QUIET LUXURY HERO SECTION
+   2. BOTTOM-ANCHORED EDITORIAL HERO SECTION
    ========================================================================== */
 .home-hero {
   position: relative;
   width: 100%;
-  min-height: 100svh;
   height: 100svh;
+  min-height: 100svh;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-end; /* Content anchored to bottom */
+  justify-content: center;
   overflow: hidden;
-  padding: 100px 0 40px clamp(24px, 8vw, 120px);
   box-sizing: border-box;
   background-color: #141414;
   border-top: none !important;
+  padding: 0 clamp(24px, 6vw, 96px) clamp(48px, 8vh, 96px);
 }
 
-/* Background image: Full-screen couple dining, crisp with no zoom, grain, or filters */
+/* Background image: Full-screen couple dining, clean & bright top */
 .home-hero-bg {
   position: absolute;
   inset: 0;
@@ -66,80 +66,95 @@ html.dark .home-page-v2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center right; /* keeps the couple visible on the right */
+  object-position: center 25%; /* Keeps faces and top 55% clean and visible */
   display: block;
   filter: none !important;
   animation: none !important;
   transform: none !important;
 }
 
-/* Smooth left-to-right gradient overlay: rgba(10,10,10,0.85) at 0% to rgba(10,10,10,0.1) at 70% */
+/* Bottom-up gradient overlay: rgba(10,10,10,0.92) at 0% to transparent at 60%, plus overall tint rgba(10,10,10,0.25) */
 .hero-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(10, 10, 10, 0.85) 0%,
-    rgba(10, 10, 10, 0.5) 40%,
-    rgba(10, 10, 10, 0.1) 70%,
-    transparent 100%
-  );
+  background:
+    linear-gradient(to top, rgba(10, 10, 10, 0.92) 0%, rgba(10, 10, 10, 0.6) 30%, transparent 60%),
+    rgba(10, 10, 10, 0.25);
   z-index: 1;
   pointer-events: none;
 }
 
-/* Short fade to #141414 at the bottom */
-.hero-bottom-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(to top, #141414 0%, transparent 100%);
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Left-aligned text block, vertically centered, max-width 640px */
-.home-hero-content {
+/* Two-column bottom grid: headline block on left, reservation card on right */
+.home-hero-grid {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 640px;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  align-items: end;
+  justify-content: space-between;
+  gap: clamp(32px, 5vw, 64px);
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   LEFT: HEADLINE BLOCK (max-width 760px)
+   ========================================================================== */
+.home-hero-content {
+  max-width: 760px;
   text-align: left;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   box-sizing: border-box;
-  padding-right: 24px;
 }
 
-/* 1. Eyebrow: "WELCOME TO VEYRA" in gold, 12px, letter-spacing 0.4em */
+/* 1. Eyebrow: "WELCOME TO VEYRA" in gold, 12px, letter-spacing 0.4em, 48px gold line before it */
 .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.4em;
   color: #C49A5A;
   text-transform: uppercase;
-  margin: 0 0 24px 0;
-  line-height: 1.2;
+  margin: 0 0 20px 0;
+  line-height: 1;
 }
 
-/* 2. Headline: 2 lines only, Cormorant Garamond, weight 400, clamp(3rem, 7vw, 6rem), line-height 1.05. White, "remembering." gold italic. Not bold, not uppercase. */
+.hero-eyebrow-line {
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  background-color: #C49A5A;
+  flex-shrink: 0;
+}
+
+.hero-eyebrow-text {
+  display: inline-block;
+}
+
+/* 2. Headline on two lines: Cormorant Garamond, weight 400, clamp(2.75rem, 6vw, 5.5rem), line-height 1.0 */
 .home-hero-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 400;
-  font-size: clamp(3rem, 7vw, 6rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.015em;
   color: #ffffff;
-  margin: 0 0 32px 0;
-  text-transform: none; /* Not uppercase */
+  margin: 0 0 24px 0;
+  text-transform: none;
 }
 
 .hero-title-line {
   display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1.0;
 }
 
 .hero-title-line.text-gold {
@@ -148,34 +163,34 @@ html.dark .home-page-v2 {
 
 .hero-title-line.font-italic {
   font-style: italic;
-  font-weight: 400;
 }
 
-/* 3. Short paragraph, 17px, rgba(255,255,255,0.75), max-width 460px, 32px below headline */
+/* 3. Paragraph: 17px, rgba(255,255,255,0.75), max-width 480px, 24px below headline */
 .home-hero-subtitle {
   font-family: var(--font-main, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.75);
-  max-width: 460px;
-  margin: 0 0 40px 0; /* 40px below paragraph to buttons */
+  max-width: 480px;
+  margin: 0 0 32px 0;
   font-weight: 400;
 }
 
-/* 4. Two buttons, 40px below paragraph, 16px gap */
+/* 4. Buttons: 32px below paragraph */
 .home-hero-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
-/* "Explore Menu": solid gold pill, 52px tall, dark text, 12px uppercase, letter-spacing 0.2em */
+/* "Explore Menu": solid gold pill, 52px tall, dark text, uppercase, letter-spacing 0.2em */
 .hero-btn-explore {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 52px;
+  min-height: 48px;
   padding: 0 32px;
   border-radius: 9999px;
   background-color: #C49A5A;
@@ -187,8 +202,8 @@ html.dark .home-page-v2 {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid #C49A5A;
-  box-shadow: 0 4px 18px rgba(196, 154, 90, 0.18);
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 18px rgba(196, 154, 90, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
   cursor: pointer;
   box-sizing: border-box;
   white-space: nowrap;
@@ -197,17 +212,17 @@ html.dark .home-page-v2 {
 .hero-btn-explore:hover {
   background-color: #d4a853;
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(196, 154, 90, 0.32);
+  box-shadow: 0 8px 24px rgba(196, 154, 90, 0.35);
 }
 
-/* "Our Story": text link with a thin gold underline and a small arrow, no border, no box */
+/* "Our Story →": text link with a thin gold underline and small arrow */
 .hero-btn-story-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: transparent;
   border: none;
-  padding: 8px 6px;
+  padding: 10px 4px;
   color: #ffffff;
   font-family: var(--font-main, 'Inter', sans-serif);
   font-size: 14px;
@@ -228,7 +243,7 @@ html.dark .home-page-v2 {
 
 .hero-story-arr {
   color: #C49A5A;
-  font-size: 15px;
+  font-size: 14px;
   transition: transform 0.25s ease;
   display: inline-block;
 }
@@ -239,6 +254,232 @@ html.dark .home-page-v2 {
 
 .hero-btn-story-link:hover .hero-story-text {
   color: #C49A5A;
+}
+
+/* ==========================================================================
+   RIGHT: FLOATING RESERVATION CARD (width 340px)
+   ========================================================================== */
+.hero-res-card {
+  width: 340px;
+  max-width: 100%;
+  box-sizing: border-box;
+  justify-self: end;
+}
+
+.hero-res-card-inner {
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.hero-res-card:hover .hero-res-card-inner {
+  transform: translateY(-4px);
+  border-color: rgba(196, 154, 90, 0.35);
+  box-shadow: 0 16px 36px rgba(196, 154, 90, 0.2), 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.hero-res-label {
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #C49A5A;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* Three rows with thin dividers */
+.hero-res-rows {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.hero-res-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease;
+}
+
+.hero-res-row:hover {
+  border-bottom-color: rgba(196, 154, 90, 0.4);
+}
+
+.hero-res-key {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.hero-res-val {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.hero-res-row:hover .hero-res-val {
+  color: #C49A5A;
+}
+
+.hero-res-chevron {
+  color: #C49A5A;
+  transition: transform 0.2s ease;
+}
+
+.hero-res-row:hover .hero-res-chevron {
+  transform: translateX(3px);
+}
+
+/* Gold full-width button "Check Availability", 48px tall */
+.hero-res-submit-btn {
+  width: 100%;
+  height: 48px;
+  min-height: 48px;
+  background-color: #C49A5A;
+  color: #141414;
+  border: 1px solid #C49A5A;
+  border-radius: 9999px;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(196, 154, 90, 0.2);
+}
+
+.hero-res-submit-btn:hover {
+  background-color: #d4a853;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196, 154, 90, 0.35);
+}
+
+.hero-btn-label-mobile {
+  display: none;
+}
+
+.hero-btn-label-desktop {
+  display: inline-block;
+}
+
+.hero-res-footnote {
+  font-family: var(--font-main, 'Inter', sans-serif);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 14px;
+}
+
+/* Hero Responsive & Motion Overrides */
+@media (max-width: 1023px) {
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: end;
+  }
+
+  .hero-res-card {
+    width: 100%;
+    max-width: 480px;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-hero {
+    padding: 84px clamp(20px, 5vw, 24px) clamp(36px, 6vh, 48px);
+    align-items: flex-end;
+  }
+
+  .home-hero-grid {
+    gap: 28px;
+  }
+
+  .home-hero-content {
+    max-width: 100%;
+  }
+
+  .home-hero-subtitle {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .home-hero-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .hero-btn-explore {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-btn-story-link {
+    justify-content: flex-start;
+  }
+
+  .hero-res-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-res-card-inner {
+    padding: 20px;
+  }
+
+  /* Under 768px: hide the date/guests/time selector rows inside the card */
+  .hero-res-rows {
+    display: none !important;
+  }
+
+  .hero-btn-label-desktop {
+    display: none !important;
+  }
+
+  .hero-btn-label-mobile {
+    display: inline-block !important;
+  }
+
+  .hero-res-submit-btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-content,
+  .hero-res-card {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 /* ==========================================================================
@@ -765,48 +1006,6 @@ html.dark .home-page-v2 {
   transform: translateX(4px);
 }
 
-/* ==========================================================================
-   MOBILE HERO (UNDER 768px)
-   ========================================================================== */
-@media (max-width: 767px) {
-  .home-hero {
-    padding: 90px 24px 48px clamp(24px, 6vw, 36px);
-    align-items: flex-end; /* Text left-aligned at bottom of hero */
-  }
-
-  .home-hero-content {
-    max-width: 100%;
-    text-align: left;
-    align-items: flex-start;
-    padding-right: 0;
-  }
-
-  /* Overlay darker at the bottom: gradient from transparent at top to rgba(10,10,10,0.9) */
-  .hero-gradient-overlay {
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(10, 10, 10, 0.45) 35%,
-      rgba(10, 10, 10, 0.9) 100%
-    ) !important;
-  }
-
-  .hero-bottom-fade {
-    display: none;
-  }
-
-  .home-hero-actions {
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .hero-btn-explore {
-    width: 100%;
-    justify-content: center;
-  }
-}
 
 /* Button full width under 480px for other sections */
 @media (max-width: 479px) {
