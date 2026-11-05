@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
-import AnnouncementBar from './components/AnnouncementBar';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -22,7 +21,6 @@ function App() {
       <MotionConfig reducedMotion="user">
         <BrowserRouter>
           <div className="app-container">
-            <AnnouncementBar />
             <Header />
             <SearchOverlay />
             <Cart />

@@ -6,24 +6,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700&display=swap');
 
 /* ==========================================================================
-   HEADER CONTAINER (STICKY / FIXED)
+   HEADER CONTAINER (FIXED AT TOP)
    ========================================================================== */
 .veyra-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 84px;
-  background-color: #141414;
+  background-color: transparent;
   border-top: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent !important;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
   z-index: 1000;
   box-sizing: border-box;
-  transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+  transition: height 0.3s ease,
               background-color 0.3s ease,
               border-color 0.3s ease,
+              backdrop-filter 0.3s ease,
+              -webkit-backdrop-filter 0.3s ease,
               box-shadow 0.3s ease;
 }
 
@@ -36,7 +38,10 @@
 /* Scrolled State (> 40px scroll) */
 .veyra-header.is-scrolled {
   height: 68px;
-  background-color: rgba(20, 20, 20, 0.92);
+  background-color: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
 }
 

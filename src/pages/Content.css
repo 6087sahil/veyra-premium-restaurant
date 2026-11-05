@@ -14,7 +14,7 @@
   background-color: var(--color-bg);
   color: var(--color-text-body);
   font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
   padding-bottom: 80px;
 }
 

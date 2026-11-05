@@ -94,7 +94,6 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
   max-width: 100%;
   width: 100%;
 }
@@ -104,7 +103,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   width: 100%;
   min-height: 100svh;
@@ -142,7 +141,23 @@ input:not([type="checkbox"]):not([type="radio"]), select, textarea {
   max-width: 100%;
   margin: 0 auto;
   position: relative;
-  overflow-x: hidden;
+}
+
+/* Page content top padding for fixed navbar (84px desktop, 64px mobile) on non-home pages */
+.menu-page-v2,
+.about-page-v2,
+.content-page-v2,
+.signin-page {
+  padding-top: 84px;
+}
+
+@media (max-width: 767px) {
+  .menu-page-v2,
+  .about-page-v2,
+  .content-page-v2,
+  .signin-page {
+    padding-top: 64px;
+  }
 }
 
 /* Header Styles */

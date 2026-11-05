@@ -235,7 +235,7 @@ const Header = () => {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   // Lock body scroll when mobile menu, reservation modal, or search panel is open
   useEffect(() => {
