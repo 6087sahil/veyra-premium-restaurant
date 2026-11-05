@@ -37,6 +37,25 @@ const imageClip = {
   visible: { clipPath: 'inset(0% 0 0 0)', scale: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
 };
 
+const HERO_SLIDES = [
+  {
+    type: 'video',
+    src: '/000.mp4',
+    poster: '/home_hero.jpg',
+    alt: 'Veyra dining room ambiance'
+  },
+  {
+    type: 'image',
+    src: '/about_chef.jpg',
+    alt: 'Veyra master chef crafting dishes'
+  },
+  {
+    type: 'image',
+    src: '/cinematic_feast.jpg',
+    alt: 'Artisanal plating and gastronomy at Veyra'
+  }
+];
+
 const Home = () => {
   const { setIsReservationOpen } = useAppContext();
   const [selectedDate, setSelectedDate] = useState('Today');
@@ -45,9 +64,74 @@ const Home = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const cardRef = useRef(null);
 
+  // Slideshow state & video refs
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isFirstSlideLoaded, setIsFirstSlideLoaded] = useState(false);
+  const videoRefs = useRef([]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Safe fallback to prevent hanging if first frame is cached without firing onLoadedData
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsFirstSlideLoaded(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Main slideshow cycle: runs in a single interval with proper cleanup to prevent Strict Mode double-timer bugs.
+  // Waits until first slide media is ready; shows full 6s duration per slide.
+  useEffect(() => {
+    if (!isFirstSlideLoaded) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) return;
+
+    // Ensure active slide's video is playing
+    const currentVideo = videoRefs.current[activeSlide];
+    if (currentVideo && currentVideo.paused) {
+      currentVideo.play().catch(() => {});
+    }
+
+    // Pre-play next video 1s BEFORE its fade-in begins so it decodes smoothly
+    const nextIdx = (activeSlide + 1) % HERO_SLIDES.length;
+    const prewarmTimer = setTimeout(() => {
+      const nextVideo = videoRefs.current[nextIdx];
+      if (nextVideo && nextVideo.paused) {
+        nextVideo.currentTime = 0;
+        nextVideo.play().catch(() => {});
+      }
+    }, 5000);
+
+    const intervalId = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+
+    return () => {
+      clearTimeout(prewarmTimer);
+      clearInterval(intervalId);
+    };
+  }, [isFirstSlideLoaded, activeSlide]);
+
+  // Pause inactive videos 1.3s after crossfade to save battery/resources
+  useEffect(() => {
+    HERO_SLIDES.forEach((slide, idx) => {
+      if (slide.type === 'video' && idx !== activeSlide) {
+        const vid = videoRefs.current[idx];
+        const timer = setTimeout(() => {
+          if (vid && !vid.paused && idx !== activeSlide) {
+            vid.pause();
+          }
+        }, 1300);
+        return () => clearTimeout(timer);
+      }
+    });
+  }, [activeSlide]);
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -86,17 +170,40 @@ const Home = () => {
     <main className="home-page-v2">
       {/* 1. Bottom-Anchored Editorial Hero Section */}
       <section className="home-hero">
-        <div className="home-hero-bg">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/home_hero.jpg"
-            className="home-hero-video"
-          >
-            <source src="/000.mp4" type="video/mp4" />
-          </video>
+        <div className={`home-hero-bg ${isFirstSlideLoaded ? 'is-loaded' : ''}`}>
+          {HERO_SLIDES.map((slide, index) => {
+            const isActive = index === activeSlide;
+            return (
+              <div
+                key={slide.src}
+                className={`hero-slide ${isActive ? 'is-active' : ''}`}
+                aria-hidden={!isActive}
+              >
+                {slide.type === 'video' ? (
+                  <video
+                    ref={(el) => (videoRefs.current[index] = el)}
+                    src={slide.src}
+                    poster={slide.poster}
+                    autoPlay={index === 0}
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    onLoadedData={index === 0 ? () => setIsFirstSlideLoaded(true) : undefined}
+                    className="hero-slide-media"
+                  />
+                ) : (
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    onLoad={index === 0 ? () => setIsFirstSlideLoaded(true) : undefined}
+                    className="hero-slide-media"
+                  />
+                )}
+              </div>
+            );
+          })}
           {/* Bottom-up gradient overlay */}
           <div className="hero-gradient-overlay" />
         </div>
